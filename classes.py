@@ -5,78 +5,73 @@ class Television:
     MIN_VOLUME = 0  # Minimum TV volume
     MAX_VOLUME = 2  # Maximum TV volume
 
-    def __init__(self):
-        self.__power = False
-        self.__volume = Television.MIN_VOLUME
-        self.__channel = Television.MIN_CHANNEL
+    def __init__(self) -> None:
+        self.__power: bool = False
+        self.__volume: int = Television.MIN_VOLUME
+        self.__channel: int = Television.MIN_CHANNEL
 
-        ##self.__MIN_VOLUME =
-        """
-        - Create a private variable to store the TV channel. It should be set to the minimum TV channel by default.
-        - Create a private variable to store the TV volume. It should be set to the minimum TV volume by default.
-        - Create a private variable to store the TV status. The TV should start when it is off.
+
+
+    def power(self) -> None:
         """
 
-    def power(self):
-
+        :return: this method checks what's the power status of TV. If its "ON" it turns it "OFF". Or if it's "OFF" it turns it "ON"
+        """
         self.__power = not self.__power
 
-        """
-        - This method should be used to turn the TV on/off.
-        - If called on a TV object that is off, the TV object should be turned on.
-        - If called on a TV object that is on, the TV object should be turned off.
-        """
 
-    def channel_up(self):
+
+
+    def channel_up(self) -> None:
+        """
+        this method checks if the power is "ON" next it checks if the channel equals "MAXIMUM" it increases channel by one bringing back the "MINIMUM"
+        :return:
+        """
         if self.__power:
             if self.__channel == Television.MAX_CHANNEL:
                 self.__channel = Television.MIN_CHANNEL
             else:
                 self.__channel += 1
 
-        """
-        - This method should be used to adjust the TV channel by incrementing its value.
-        - It should only work for a TV that is on.
-        - If the method is called when one is on the MAX_CHANNEL, it should take the TV channel back to the MIN_CHANNEL.
-        """
 
 
-    def channel_down(self):
+
+    def channel_down(self) -> None:
+        """
+        this method checks if the power is "ON" next it checks if the channel equals "MINIMUM" it decreases channel by one bringing back the "MAXIMUM"
+        :return:
+        """
         if self.__power:
             if self.__channel == Television.MIN_CHANNEL:
                 self.__channel = Television.MAX_CHANNEL
             else:
                 self.__channel -= 1
 
-        """
-        - This method should be used to adjust the TV channel by decrementing its value.
-        - It should only work for a TV that is on.
-        - If the method is called when one is on the MIN_CHANNEL, it should take the TV channel back to the MAX_CHANNEL.
-        """
 
 
-    def volume_up(self):
+
+    def volume_up(self) -> None:
+        """
+        this method checks if the power is "ON" next it checks if the volume is less than "MAX VOLUME" then it increases the current volume by one
+        :return:
+        """
         if self.__power:
             if self.__volume < Television.MAX_VOLUME:
                 self.__volume += 1
 
 
-        """
-        - This method should be used to adjust the TV volume by incrementing its value.
-        - It should only work for a TV that is on.
-        - If the method is called when one is on the MAX_VOLUME, the volume should not be adjusted.
-        """
 
 
-    def volume_down(self):
+
+    def volume_down(self) -> None:
+        """
+        this method checks if the power is "ON" next it checks if the volume is more than "MIN VOLUME" then it decreases the current volume by one
+        :return:
+        """
         if self.__power:
             if self.__volume > Television.MIN_VOLUME:
                 self.__volume -= 1
-        """
-        - This method should be used to adjust the TV volume by decrementing its value.
-        - It should only work for a TV that is on.
-        - If the method is called when one is on the MIN_VOLUME, the volume should not be adjusted.
-        """
+
 
 
     def __str__(self):
